@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-const allowedOrigins = ['inspiring-faloodeh-d392bd.netlify.app'];
+const allowedOrigins = ['https://inspiring-faloodeh-d392bd.netlify.app'];
 
 app.use(cors({
   origin: allowedOrigins
