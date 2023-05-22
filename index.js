@@ -10,9 +10,8 @@ app.use(cors('*'));
 app.use(express.json());
 
 const mongooseOptions = {
-useNewUrlParser: true,
-useUnifiedTopology: true,
-useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 };
 
 mongoose.connect(process.env.DB_URI, mongooseOptions)
