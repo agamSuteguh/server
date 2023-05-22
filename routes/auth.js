@@ -60,7 +60,7 @@ router.post("/login",  async (req, res) => {
 });
 
 //login siswa
-router.post("/logins",  async (req, res) => {
+app.post("/logins",  async (req, res) => {
   try {
        const { username , password } = req.body;
 
