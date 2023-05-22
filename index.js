@@ -30,6 +30,58 @@ app.get("/", (req, res) => {
 res.send("Hello World!");
 });
 
+app.post("/logins",  async (req, res) => {
+  try {
+       const { username , password } = req.body;
+
+       const existSiswa = await Siswa.findOne({ username });
+
+
+    if (!username || !password) {
+      return res.json({
+        status: "bad",
+        msg: "Isi semua baris",
+      });
+    }
+
+
+
+    if (!existSiswa) {
+      return res.json({
+        status: "bad",
+        msg: "Tidak ada akun yang ditemukan untuk nama pengguna yang Anda masukkan!",
+      });
+    }
+
+    const comparedPass = await bcrypt.compare(password, existSiswa.password);
+
+    if (!comparedPass) {
+      return res.json({
+        status: "bad",
+        msg: "Kata sandi yang dimasukkan salah!",
+      });
+    }
+
+    const hashedPass = await bcrypt.hash(password, 10);
+
+   
+
+    const token = await jwt.sign({ Siswa },   "tokenkey");
+
+    res.json({
+      status: "ok",
+      msg: "Anda berhasil masuk!",
+      Siswa:existSiswa,
+      password:hashedPass,
+      token,
+
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+
 app.use("/api/auth", require("./routes/auth.js"));
 app.use("/api/siswa", require("./routes/siswa.js"));
 app.use("/api/admin", require("./routes/admin.js"));
