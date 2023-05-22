@@ -43,6 +43,4 @@ app.use("/api/spp", require("./routes/spp.js"));
 
 
 
-app.listen(process.env.PORT, () => {
-  console.log("Server started!");
-});
+
