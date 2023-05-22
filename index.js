@@ -5,7 +5,11 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-app.use(cors('*'))
+const corsOptions = {
+  origin: 'https://inspiring-faloodeh-d392bd.netlify.app',
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
