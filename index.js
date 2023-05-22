@@ -8,6 +8,7 @@ const app = express();
 app.use(cors({
 origin: ['*'],
 credentials: true,
+  preflightContinue; true,
 }));
 
 app.use(express.json());
