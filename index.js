@@ -5,11 +5,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-const corsOptions = {
-  origin: 'https://inspiring-faloodeh-d392bd.netlify.app/loginSiswa',
-};
-
-app.use(cors(corsOptions));
+app.use(cors('*'));
 
 app.use(express.json());
 
