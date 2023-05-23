@@ -88,3 +88,8 @@ app.use("/api/admin", require("./routes/admin.js"));
 app.use("/api/kelas", require("./routes/kelas.js"));
 app.use("/api/transaksi", require("./routes/transaksi.js"));
 app.use("/api/spp", require("./routes/spp.js"));
+
+
+app.listen(process.env.PORT, () => {
+  console.log("Server started!");
+});
